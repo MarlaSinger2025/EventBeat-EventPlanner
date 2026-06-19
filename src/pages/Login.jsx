@@ -8,6 +8,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,10 +21,18 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(input);
-    if (input.email !== "" && input.password !== "") {
-      auth.loginAction(input);
+    if (input.email === "") {
+      setError("Enter a valid email");
+    } else if (input.password === "") {
+      {
+        setError("Enter a valid password");
+      }
     } else {
-      alert("please provide a valid input");
+      auth.loginAction(input);
+      setInput({
+        email: "",
+        password: "",
+      });
     }
   };
 
@@ -40,6 +49,7 @@ const Login = () => {
     >
       <form onSubmit={handleSubmit}>
         <h1>Login</h1>
+        {error && <p style={{ color: "red" }}>{error}</p>}
         <label>
           Email:
           <br />

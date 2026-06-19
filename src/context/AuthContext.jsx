@@ -15,14 +15,16 @@ export default function AuthProvider({ children }) {
         body: JSON.stringify(data),
       });
       const res = await response.json();
-      // console.log(res);
-      if (res) {
+      //console.log(res);
+      if (response.ok) {
         setUser(res.user);
         setToken(res.token);
         localStorage.setItem("token", res.token);
         //navigate("/dashboard");
         console.log("success");
         return;
+      } else {
+        alert(res.error);
       }
       throw new Error(res.message);
     } catch (err) {
