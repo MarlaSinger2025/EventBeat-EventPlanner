@@ -16,14 +16,15 @@ export const EventProvider = ({children}) => {
         const fetchData = async() => {
             try {
 
-            const response = await fetch('http://localhost:3001/api/events?page=1&limit=20');
+            const response = await fetch('http://localhost:3001/api/events');
+
 
             if (!response.ok) {
                 throw new Error(`Error status: ${response.status}`);
             }
 
-            const result = await response.json()
-            setEvents(result);
+            const data = await response.json()
+            setEvents(data.results ?? []); // fallback to empty array if result is undefined
             setDataIsLoaded(true);
 
             } catch (err) {
@@ -34,8 +35,8 @@ export const EventProvider = ({children}) => {
             
         fetchData()
         
+        
 }, []);
-
 
 //Fetch event details with selected ID
 useEffect(() => {
@@ -46,8 +47,8 @@ useEffect(() => {
             const response = await fetch(`http://localhost:3001/api/events/${selectedId}`);
             if (!response.ok) throw new Error(`Error status: ${response.status}`);
 
-            const result = await response.json();
-            setEventDetail(result);
+            const data = await response.json();
+            setEventDetail(data.results);
         } catch (err) {
             setError(err.message);
         }
