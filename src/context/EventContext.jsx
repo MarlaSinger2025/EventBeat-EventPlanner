@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect, useContext } from "react";
 
-const EventsContext = createContext();
+const EventContext = createContext();
 
-export const EventsProvider = ({children}) => {
+export const EventProvider = ({children}) => {
 
     const [ events, setEvents] = useState([]);
     const [eventDetail, setEventDetail] = useState(null);
@@ -56,16 +56,16 @@ useEffect(() => {
 }, [selectedId]); 
 
 return (
-        <EventsContext.Provider 
+        <EventContext.Provider 
         value={{ events, eventDetail, dataIsLoaded, error, setSelectedId }}
         >
             {children}
-            </EventsContext.Provider>
+            </EventContext.Provider>
     );
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
 export function useEvent() {
-return useContext(EventsContext);
+return useContext(EventContext);
 
 };
