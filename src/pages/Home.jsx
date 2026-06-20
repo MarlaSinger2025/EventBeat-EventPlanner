@@ -1,6 +1,7 @@
 //Home page
 import EventCards from '../components/EventCards';
 import { useEvent } from '../context/EventContext';
+import Navbar from '../components/Navbar';
 
 
 const Home = () => {
@@ -11,19 +12,18 @@ const Home = () => {
         (a, b) => new Date(b.date) - new Date(a.date)
      );
 
-     console.log("dataIsLoaded:", dataIsLoaded);
-  console.log("events:", events);
-  console.log("error:", error);
-
     if (!dataIsLoaded) return <p>Loading events...</p>;
     if (error) return <p>Something went wrong: {error} </p>;
 
     return (
- <div className="flex flex-wrap gap-6 p-4 justify-start">
-            {sortedEvents.map((event) => (
+        <>
+        <Navbar />
+            <div className="flex flex-wrap gap-6 p-4 justify-start">
+                {sortedEvents.map((event) => (
                 <EventCards key={event.id} {...event} />
-            ))}
-</div>
+                ))}
+            </div>
+        </>
     );
 };
 
