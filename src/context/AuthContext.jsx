@@ -20,13 +20,14 @@ export default function AuthProvider({ children }) {
         setUser(res.user);
         setToken(res.token);
         localStorage.setItem("token", res.token);
-        //navigate("/dashboard");
+        //navigate("/EventDetails");
         console.log("success");
         return;
       } else {
+        localStorage.setItem("token", res.token);
+        localStorage.removeItem("token");
         alert(res.error);
       }
-      throw new Error(res.message);
     } catch (err) {
       console.error(err);
     }
