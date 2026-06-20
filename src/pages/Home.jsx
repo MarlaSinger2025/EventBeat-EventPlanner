@@ -2,6 +2,7 @@
 import EventCards from '../components/EventCards';
 import { useEvent } from '../context/EventContext';
 import Navbar from '../components/Navbar';
+import Hero from '../components/Hero';
 
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
     return (
         <>
         <Navbar />
+          <Hero />
             <div className="flex flex-wrap gap-6 p-4 justify-start">
                 {sortedEvents.map((event) => (
                 <EventCards key={event.id} {...event} />
