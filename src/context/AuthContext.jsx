@@ -1,0 +1,49 @@
+import { createContext, useState, useContext } from "react";
+
+const AuthContext = createContext();
+export default function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const loginAction = async (data) => {
+    try {
+      const response = await fetch("http://localhost:4001/api/auth/login", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const res = await response.json();
+      //console.log(res);
+      if (response.ok) {
+        setUser(res.user);
+        setToken(res.token);
+        localStorage.setItem("token", res.token);
+        //navigate("/dashboard");
+        console.log("success");
+        return;
+      } else {
+        alert(res.error);
+      }
+      throw new Error(res.message);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  const logOut = () => {
+    setUser(null);
+    setToken("");
+    localStorage.removeItem("site");
+    navigate("/login");
+  };
+  return (
+    <AuthContext.Provider value={{ token, user, loginAction, logOut }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+export function useAuth() {
+  return useContext(AuthContext);
+}
