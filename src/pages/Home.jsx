@@ -1,7 +1,6 @@
 //Home page
 import EventCards from '../components/EventCards';
 import { useEvent } from '../context/EventContext';
-import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 
 
@@ -18,9 +17,9 @@ const Home = () => {
 
     return (
         <>
-        <Navbar />
+        
           <Hero />
-            <div className="flex flex-wrap gap-6 p-4 justify-start">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-5 w-full px-4">
                 {sortedEvents.map((event) => (
                 <EventCards key={event.id} {...event} />
                 ))}
