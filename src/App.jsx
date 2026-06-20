@@ -1,15 +1,17 @@
 import "./App.css";
-import Login from "./pages/Login";
-import AuthProvider from "./context/AuthContext";
-import Registration from "./pages/Registration";
+import { Routes, Route } from 'react-router';
+import Home from "./pages/Home";
+// import EventDetails from './pages/EventDetails';
 
 function App() {
-  return (
-    // <AuthProvider>
-    //   <Login />
-    // </AuthProvider>
-    <Registration />
-  );
+    return (
+        <Routes>
+            <Route path="/" element={<Home />} />
+            
+        </Routes>
+    )
 }
 
 export default App;
+
+{/* <Route path="/events/:id" element={<EventDetails />} /> */}
