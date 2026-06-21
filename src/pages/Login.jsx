@@ -8,7 +8,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,39 +17,40 @@ const Login = () => {
       [name]: value,
     }));
   };
+  const validate = () => {
+    const newErrors = {};
+
+    if (!input.email || !input.email.includes("@")) {
+      newErrors.email = "Please enter a valid email";
+    }
+    if (input.password.length < 8) {
+      newErrors.password = "Please enter a valid password";
+    }
+    return newErrors;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(input);
-    if (input.email === "") {
-      setError("Enter a valid email");
-    } else if (input.password === "") {
-      {
-        setError("Enter a valid password");
-      }
-    } else {
-      auth.loginAction(input);
-      setInput({
-        email: "",
-        password: "",
-      });
+    const errors = validate();
+    if (Object.keys(errors).length > 0) {
+      setError(errors);
+      return; // stop here, don't accept the submission
     }
+
+    auth.loginAction(input);
+    setInput({
+      email: "",
+      password: "",
+    });
+    setError({});
+    //}
   };
 
   return (
-    <div
-      style={{
-        maxWidth: "300px",
-        margin: "50px auto",
-        padding: "20px",
-        paddingLeft: "40px",
-        fontFamily: "system-ui, sans-serif",
-        border: "3px solid black",
-      }}
-    >
+    <div className="max-w-100 mx-auto mt-30 p-5 pl-10 border-[3px] border-black font-sans rounded-2xl">
       <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        <h1 className="font-bold text-3xl mb-5">Login</h1>
+
         <label>
           Email:
           <br />
@@ -58,9 +59,10 @@ const Login = () => {
             name="email"
             value={input.email}
             onChange={handleChange}
-            style={{ height: "25px" }}
+            className="w-full h-9 mt-1 border border-black"
           ></input>
         </label>
+        {error.email && <p style={{ color: "red" }}>{error.email}</p>}
         <br />
         <br />
         <label>
@@ -71,12 +73,16 @@ const Login = () => {
             name="password"
             value={input.password}
             onChange={handleChange}
-            style={{ height: "25px" }}
+            className="w-full h-9 mt-1 border border-black"
           ></input>
         </label>
+        {error.password && <p style={{ color: "red" }}>{error.password}</p>}
         <br />
         <br />
-        <button type="submit" style={{ width: "100px" }}>
+        <button
+          type="submit"
+          className="w-20 py-2 bg-gray-800 text-white rounded hover:bg-gray-400"
+        >
           Login
         </button>
       </form>
