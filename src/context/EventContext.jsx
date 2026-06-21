@@ -48,7 +48,7 @@ useEffect(() => {
             if (!response.ok) throw new Error(`Error status: ${response.status}`);
 
             const data = await response.json();
-            setEventDetail(data.results);
+            setEventDetail(data);
         } catch (err) {
             setError(err.message);
         }
