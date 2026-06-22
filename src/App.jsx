@@ -1,14 +1,13 @@
 import "./App.css";
 import { Routes, Route } from "react-router";
 import Home from "./pages/Home";
-// import EventDetails from './pages/EventDetails';
 import Navbar from "./components/Navbar";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 import AuthProvider from "./context/AuthContext";
 import EventDetails from "./pages/EventDetails";
 import NotFound from "./pages/NotFound";
-import { EventProvider } from "./context/EventContext";
+import { EventProvider }  from "./context/EventContext";
 import CreateEvent from "./pages/CreateEvent";
 
 function App() {

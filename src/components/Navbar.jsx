@@ -1,11 +1,13 @@
 // import Registration
 // import Login
-
+import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router";
 
 const Navbar = () => {
-  const navigate = useNavigate();
-  const handleCreateEvent = () => {
+
+    const { isAuthenticated, logOut } = useAuth();
+    const navigate = useNavigate();
+    const handleCreateEvent = () => {
     const token = localStorage.getItem("token");
 
     if (token) {
@@ -27,14 +29,18 @@ const Navbar = () => {
             EventBeat
           </span>
         </Link>
-        <div className="flex items-end gap-5">
-          <button
+        <button
             onClick={handleCreateEvent}
             className="mt-4 border-2 border-gray-600 p-3 rounded-full"
           >
             Create Event
           </button>
-          <Link to="/registration">
+        <div className="flex items-end gap-5">
+            { isAuthenticated? (
+                <button className="mt-4 border-2 border-gray-600 p-3 rounded-full" onClick={logOut} >Log out</button>
+            ) : (
+                <>
+        <Link to="/registration">
             <button className="mt-4 border-2 border-gray-600 p-3 rounded-full">
               Sign up
             </button>
@@ -46,6 +52,8 @@ const Navbar = () => {
             {" "}
             Already registerd? Log in here
           </Link>
+          </>
+            )} 
         </div>
       </nav>
     </header>
