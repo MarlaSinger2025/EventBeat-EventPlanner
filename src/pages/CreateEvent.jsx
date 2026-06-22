@@ -12,7 +12,7 @@ const initialData = {
 const CreateEvent = () => {
   const [eventData, setEventData] = useState(initialData);
   const [errors, setErrors] = useState({});
-  const { addEvent, isAdded } = useEvent();
+  const { addEvent } = useEvent();
 
   const authToken = localStorage.getItem("token");
 
