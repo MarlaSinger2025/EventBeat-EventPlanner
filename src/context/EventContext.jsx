@@ -44,7 +44,7 @@ export const EventProvider = ({ children }) => {
         if (!response.ok) throw new Error(`Error status: ${response.status}`);
 
         const data = await response.json();
-        setEventDetail(data.results);
+        setEventDetail(data);
       } catch (err) {
         setError(err.message);
       }
@@ -53,7 +53,7 @@ export const EventProvider = ({ children }) => {
   }, [selectedId]);
 
   const addEvent = async (eventData, authToken) => {
-    setError({});
+    setError(null);
     try {
       const response = await fetch("http://localhost:4001/api/events", {
         method: "POST",
