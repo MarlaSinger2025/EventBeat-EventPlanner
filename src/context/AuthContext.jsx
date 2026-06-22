@@ -1,7 +1,9 @@
 import { createContext, useState, useContext } from "react";
+import { useNavigate } from "react-router";
 
 const AuthContext = createContext();
 export default function AuthProvider({ children }) {
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const loginAction = async (data) => {
@@ -20,8 +22,9 @@ export default function AuthProvider({ children }) {
         setUser(res.user);
         setToken(res.token);
         localStorage.setItem("token", res.token);
-        //navigate("/EventDetails");
+        navigate("/");
         console.log("success");
+        //window.location.href = "/createevent";
         return;
       } else {
         localStorage.setItem("token", res.token);
