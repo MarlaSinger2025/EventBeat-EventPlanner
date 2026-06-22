@@ -1,27 +1,50 @@
 // import Registration
 // import Login
 
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const Navbar = () => {
-    return (
-        <header className="absolute top-0 bg-transparent w-full h-20 z-50 mx-auto" >
-            <nav className="max-w-screen flex items-end justify-around mx-auto p-4">
-            <div>
-            <p className=" text-[#150046] text-3xl font-bold tracking-tight">EventBeat</p>
-            </div>
-            <div className="flex items-end gap-5">
-            <Link to='/registration' >
-			<button className='mt-4 border-2 border-gray-600 p-3 rounded-full'>Sign up</button>
-			</Link>
-             <Link to='/login'
-                className=" hover:text-white hover:underline transition duration-200 pb-2"
-            > Already registerd? Log in here
-            </Link>
-            </div>
-            </nav>
-        </header>
-    );
+  const navigate = useNavigate();
+  const handleCreateEvent = () => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      navigate("/createevent");
+    } else {
+      alert("Please login to create an event.");
+    }
+  };
+  return (
+    <header className="absolute top-0 bg-transparent w-full h-20 z-50 mx-auto">
+      <nav className="max-w-screen flex items-end justify-around mx-auto p-4">
+        <div>
+          <p className=" text-[#150046] text-3xl font-bold tracking-tight">
+            EventBeat
+          </p>
+        </div>
+        <div className="flex items-end gap-5">
+          <button
+            onClick={handleCreateEvent}
+            className="mt-4 border-2 border-gray-600 p-3 rounded-full"
+          >
+            Create Event
+          </button>
+          <Link to="/registration">
+            <button className="mt-4 border-2 border-gray-600 p-3 rounded-full">
+              Sign up
+            </button>
+          </Link>
+          <Link
+            to="/login"
+            className=" hover:text-white hover:underline transition duration-200 pb-2"
+          >
+            {" "}
+            Already registerd? Log in here
+          </Link>
+        </div>
+      </nav>
+    </header>
+  );
 };
 
 export default Navbar;

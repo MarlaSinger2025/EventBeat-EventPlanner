@@ -22,6 +22,7 @@ export default function AuthProvider({ children }) {
         localStorage.setItem("token", res.token);
         //navigate("/EventDetails");
         console.log("success");
+        //window.location.href = "/createevent";
         return;
       } else {
         localStorage.setItem("token", res.token);
