@@ -50,7 +50,7 @@ const CreateEvent = () => {
       setErrors(newErrors);
       return; // stop here, don't accept the submission
     }
-    console.log(eventData);
+    //console.log(eventData);
     addEvent(eventData, authToken);
     setEventData(initialData);
   };

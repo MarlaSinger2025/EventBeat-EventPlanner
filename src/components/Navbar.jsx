@@ -17,11 +17,16 @@ const Navbar = () => {
   return (
     <header className="absolute top-0 bg-transparent w-full h-20 z-50 mx-auto">
       <nav className="max-w-screen flex items-end justify-around mx-auto p-4">
-        <div>
-          <p className=" text-[#150046] text-3xl font-bold tracking-tight">
+        <Link to="/" className="flex flex-row gap-3">
+          <img
+            className="w-10"
+            src="src/img/heartbeat_logo.png"
+            alt="logo of a heartbeat pulse in a cirle"
+          />
+          <span className=" text-[#150046] text-3xl font-bold tracking-tight">
             EventBeat
-          </p>
-        </div>
+          </span>
+        </Link>
         <div className="flex items-end gap-5">
           <button
             onClick={handleCreateEvent}
