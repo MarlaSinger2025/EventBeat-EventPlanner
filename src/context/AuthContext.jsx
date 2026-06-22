@@ -1,11 +1,16 @@
-import { createContext, useState, useContext } from "react";
-import { useNavigate } from "react-router";
+import { createContext, useState, useContext, useEffect } from "react";
 
 const AuthContext = createContext();
 export default function AuthProvider({ children }) {
-  const navigate = useNavigate();
+
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token") || "");
+    const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token')) // on load check localStorage for token
+  
+  useEffect(() => {
+    if(!isAuthenticated || !token) return;  //Authentication Token check?! no token - do nothing (Toni)
+  }, [isAuthenticated, token]);
+
   const loginAction = async (data) => {
     try {
       const response = await fetch("http://localhost:4001/api/auth/login", {
@@ -22,12 +27,10 @@ export default function AuthProvider({ children }) {
         setUser(res.user);
         setToken(res.token);
         localStorage.setItem("token", res.token);
-        navigate("/");
+        setIsAuthenticated(true);
         console.log("success");
-        //window.location.href = "/createevent";
         return;
       } else {
-        localStorage.setItem("token", res.token);
         localStorage.removeItem("token");
         alert(res.error);
       }
@@ -38,11 +41,11 @@ export default function AuthProvider({ children }) {
   const logOut = () => {
     setUser(null);
     setToken("");
-    localStorage.removeItem("site");
-    navigate("/login");
+    localStorage.removeItem("token");
+    setIsAuthenticated(false);
   };
   return (
-    <AuthContext.Provider value={{ token, user, loginAction, logOut }}>
+    <AuthContext.Provider value={{ token, user, loginAction, logOut, isAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );
