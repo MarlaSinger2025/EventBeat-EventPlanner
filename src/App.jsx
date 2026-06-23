@@ -9,6 +9,7 @@ import EventDetails from "./pages/EventDetails";
 import NotFound from "./pages/NotFound";
 import { EventProvider }  from "./context/EventContext";
 import CreateEvent from "./pages/CreateEvent";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -20,8 +21,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/registration" element={<Registration />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/createevent" element={<CreateEvent />} />
             <Route path="/events/:id" element={<EventDetails />} />
+                <Route element={<ProtectedRoute />} >
+                    <Route path='/createevent' element={<CreateEvent />} />
+                </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
         </EventProvider>
