@@ -11,7 +11,7 @@ const Login = () => {
   });
   const [error, setError] = useState({});
 
-  if (isAuthenticated) return <Navigate to="/" />;  //redirect to home if already authenticated
+  if (isAuthenticated) return <Navigate to="/" />; //redirect to home if already authenticated
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,48 +48,52 @@ const Login = () => {
     setError({});
     //}
   };
- //  if (isAuthenticated) return <Navigate to='/' /> // Redirection back to Homepage after succesful log in (Toni)
+  //  if (isAuthenticated) return <Navigate to='/' /> // Redirection back to Homepage after succesful log in (Toni)
 
   return (
-    <div className="max-w-100 mx-auto mt-30 p-5 pl-10 border-[3px] border-black font-sans rounded-2xl">
-      <form onSubmit={handleSubmit}>
-        <h1 className="font-bold text-3xl mb-5">Login</h1>
+    <div className="bg-[#f3851e] min-h-screen">
+      <div className="pt-5 ">
+        <div className="max-w-100 mx-auto mt-30 p-5 pl-10 border-[3px] border-black bg-white font-sans rounded-2xl">
+          <form onSubmit={handleSubmit}>
+            <h1 className="font-bold text-3xl mb-5">Login</h1>
 
-        <label>
-          Email:
-          <br />
-          <input
-            type="email"
-            name="email"
-            value={input.email}
-            onChange={handleChange}
-            className="w-full h-9 mt-1 border border-black"
-          ></input>
-        </label>
-        {error.email && <p style={{ color: "red" }}>{error.email}</p>}
-        <br />
-        <br />
-        <label>
-          Password:
-          <br />
-          <input
-            type="password"
-            name="password"
-            value={input.password}
-            onChange={handleChange}
-            className="w-full h-9 mt-1 border border-black"
-          ></input>
-        </label>
-        {error.password && <p style={{ color: "red" }}>{error.password}</p>}
-        <br />
-        <br />
-        <button
-          type="submit"
-          className="w-20 py-2 bg-gray-800 text-white rounded hover:bg-gray-400"
-        >
-          Login
-        </button>
-      </form>
+            <label>
+              Email:
+              <br />
+              <input
+                type="email"
+                name="email"
+                value={input.email}
+                onChange={handleChange}
+                className="w-full h-9 mt-1 border border-black"
+              ></input>
+            </label>
+            {error.email && <p style={{ color: "red" }}>{error.email}</p>}
+            <br />
+            <br />
+            <label>
+              Password:
+              <br />
+              <input
+                type="password"
+                name="password"
+                value={input.password}
+                onChange={handleChange}
+                className="w-full h-9 mt-1 border border-black"
+              ></input>
+            </label>
+            {error.password && <p style={{ color: "red" }}>{error.password}</p>}
+            <br />
+            <br />
+            <button
+              type="submit"
+              className="w-20 py-2 bg-gray-800 text-white rounded hover:bg-gray-400"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
