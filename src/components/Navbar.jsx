@@ -18,7 +18,7 @@ const Navbar = () => {
 //   };
   return (
     <header className="absolute top-0 bg-transparent w-full h-20 z-50 mx-auto">
-      <nav className="max-w-screen flex items-end justify-around mx-auto p-4">
+      <nav className="max-w-screen flex flex-col md:flex-row items-start md:items-end justify-around mx-auto p-4">
         <Link to="/" className="flex flex-row gap-3">
           <img
             className="w-10"
@@ -30,7 +30,7 @@ const Navbar = () => {
           </span>
         </Link >
         <Link to='/createevent' >
-        <button className="mt-4 border-2 border-gray-600 p-3 rounded-full">
+        <button className="mt-4 p-3 rounded-full bg-black font-semibold text-white hover:cursor-pointer hover:shadow-xl">
             Create Event
           </button>
           </Link>
@@ -40,13 +40,13 @@ const Navbar = () => {
             ) : (
                 <>
         <Link to="/registration">
-            <button className="mt-4 border-2 border-gray-600 p-3 rounded-full">
+            <button className="mt-4 border-2 p-3 rounded-full bg-black font-semibold text-white hover:cursor-pointer hover:shadow-xl hover:bg-linear-to-r from-black to-[pink-500">
               Sign up
             </button>
-          </Link>
+          </Link>g
           <Link
             to="/login"
-            className=" hover:text-white hover:underline transition duration-200 pb-2"
+            className=" hover:text-white hover:underline transition duration-200 pb-2 font-semibold"
           >
             {" "}
             Already registerd? Log in here
