@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 
 const initialData = {
   email: "",
@@ -73,8 +74,8 @@ const Registration = () => {
     }
   };
   return (
-    <div className="bg-[#f3851e] min-h-screen">
-      <div className="pt-5 ">
+   <div className=" bg-linear-to-b from-[#d26aff] via-white  to-pink-500 min-h-screen">
+            <div className="pt-50"> 
         <div className="max-w-100 mx-auto mt-30 p-5 px-10 bg-white border-[3px] border-black font-sans rounded-2xl">
           <form onSubmit={handleSubmit}>
             <h1 className="font-bold text-3xl mb-5">Registration Form</h1>
@@ -111,11 +112,18 @@ const Registration = () => {
             <br />
             <button
               type="submit"
-              className="w-20 py-2 bg-gray-800 text-white hover:bg-gray-400 rounded"
+              className="w-20 py-2 mb-3 bg-gray-800 text-white hover:bg-[#d26aff] rounded"
             >
               Submit
             </button>
           </form>
+          <Link
+                to="/login"
+                className=" hover:text-pink-500 hover:underline transition duration-200  font-semibold"
+              >
+                {" "}
+                Already registerd? Log in here
+              </Link>
         </div>
       </div>
     </div>

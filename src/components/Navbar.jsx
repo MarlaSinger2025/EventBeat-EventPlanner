@@ -21,7 +21,7 @@ const Navbar = () => {
         <Link to="/" className="flex flex-row gap-3">
           <img
             className="w-10"
-            src="src/img/heartbeat_logo.png"
+            src="/src/img/heartbeat_logo.png"
             alt="logo of a heartbeat pulse in a cirle"
           />
           <span className=" text-[#150046] text-3xl font-bold tracking-tight">
@@ -29,14 +29,14 @@ const Navbar = () => {
           </span>
         </Link>
         <Link to="/createevent">
-          <button className="mt-4 p-3 rounded-full bg-black font-semibold text-white hover:cursor-pointer hover:shadow-xl">
+          <button className="mt-4 p-3 rounded-full bg-black font-semibold hover:bg-pink-500 text-white hover:cursor-pointer hover:shadow-xl">
             Create Event
           </button>
         </Link>
         <div className="flex items-end gap-5">
           {isAuthenticated ? (
             <button
-              className="mt-4 border-2 border-gray-600 p-3 rounded-full"
+              className="mt-4 bg-pink-500 text-white font-semibold hover:shadow-2xl hover:bg-white hover:text-pink-500 p-3 rounded-full"
               onClick={logOut}
             >
               Log out
@@ -44,7 +44,7 @@ const Navbar = () => {
           ) : (
             <>
               <Link to="/registration">
-                <button className="mt-4 border-2 p-3 rounded-full bg-black font-semibold text-white hover:cursor-pointer hover:shadow-xl hover:bg-linear-to-r from-black to-[pink-500">
+                <button className="mt-4  p-3 rounded-full bg-black font-semibold text-white hover:bg-pink-500 hover:cursor-pointer hover:shadow-xl">
                   Sign up
                 </button>
               </Link>

@@ -10,7 +10,7 @@ const Hero = () => {
             <div className="relative z-40 text-center pt-50">
                 <h1  className="text-5xl md:text-6xl text-white font-bold"> Welcome to <br></br>
                     <p className="text-5xl md:text-8xl text-white font-bold">EventBeat</p></h1>
-                <h2 className="text-3xl md:text-4xl  text-white font-semibold"> You can look for cool events or post an event yourself</h2>
+                <h2 className="text-3xl md:text-4xl mb-10 text-white font-semibold"> You can look for cool events or post an event yourself</h2>
 
             <div> { isAuthenticated? (
                  <Link to='/createevent' >

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useEvent } from "../context/EventContext";
+import { Link } from "react-router";
 
 const initialData = {
   title: "",
@@ -56,7 +57,7 @@ const CreateEvent = () => {
   };
 
   return (
-    <div className="bg-[#f3851e] min-h-screen">
+    <div className=" bg-linear-to-b from-[#ff4ae1] to-blue-700 min-h-screen ">
       <div className="pt-5 ">
         <div className="max-w-200 mx-auto mt-30 p-5 pl-10 border-[3px] bg-white border-black font-sans rounded-2xl ">
           <form onSubmit={handleSubmit}>
@@ -153,13 +154,17 @@ const CreateEvent = () => {
             <br />
             <button
               type="submit"
-              className="w-25 py-2 bg-gray-800 text-white hover:bg-gray-400 rounded"
+              className="w-25 py-2 bg-gray-800 text-white hover:bg-blue-700 rounded"
             >
               Add Event
             </button>
           </form>
+          <Link to='/' >
+			        <button className=' p-2 rounded mt-4 bg-gray-600 text-white hover:bg-[#ff4ae1] hover:border-white hover:shadow-sm'>Cancel</button>
+          </Link> 
         </div>
       </div>
+      
     </div>
   );
 };
