@@ -66,7 +66,7 @@ export const EventProvider = ({ children }) => {
       });
       const data = await response.json();
       if (response.ok) {
-        alert("Event Added!");
+        //alert("Event Added!");
         console.log(data);
         setIsAdded(true);
       } else {

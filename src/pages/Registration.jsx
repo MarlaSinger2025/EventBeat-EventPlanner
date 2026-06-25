@@ -7,6 +7,7 @@ const initialData = {
 const Registration = () => {
   const [formData, setFormData] = useState(initialData);
   const [error, setError] = useState({});
+  const [successMsg, setSuccessMsg] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,7 +55,8 @@ const Registration = () => {
         const data = await response.json();
 
         if (response.ok) {
-          alert("Registration successful!");
+          // alert("Registration successful!");
+          setSuccessMsg(true);
           console.log(data);
           window.location.href = "/login";
         } else {
@@ -71,46 +73,50 @@ const Registration = () => {
     }
   };
   return (
-    <div className="max-w-100 mx-auto mt-30 p-5 pl-10 border-[3px] border-black font-sans rounded-2xl">
-      <div className="">
-        <form onSubmit={handleSubmit}>
-          <h1 className="font-bold text-3xl mb-5">Registration Form</h1>
-
-          <label>
-            Email:
+    <div className="bg-[#f3851e] min-h-screen">
+      <div className="pt-5 ">
+        <div className="max-w-100 mx-auto mt-30 p-5 px-10 bg-white border-[3px] border-black font-sans rounded-2xl">
+          <form onSubmit={handleSubmit}>
+            <h1 className="font-bold text-3xl mb-5">Registration Form</h1>
+            {successMsg && (
+              <p style={{ color: "green" }}>Registration successful</p>
+            )}
+            <label>
+              Email:
+              <br />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full h-9 mt-1 border border-black"
+              ></input>
+            </label>
+            {error.email && <p style={{ color: "red" }}>{error.email}</p>}
             <br />
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full h-9 mt-1 border border-black"
-            ></input>
-          </label>
-          {error.email && <p style={{ color: "red" }}>{error.email}</p>}
-          <br />
-          <br />
-          <label>
-            Password:
             <br />
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full h-9 mt-1 border border-black"
-            ></input>
-          </label>
-          {error.password && <p style={{ color: "red" }}>{error.password}</p>}
-          <br />
-          <br />
-          <button
-            type="submit"
-            className="w-20 py-2 bg-gray-800 text-white hover:bg-gray-400 rounded"
-          >
-            Submit
-          </button>
-        </form>
+            <label>
+              Password:
+              <br />
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                className="w-full h-9 mt-1 border border-black"
+              ></input>
+            </label>
+            {error.password && <p style={{ color: "red" }}>{error.password}</p>}
+            <br />
+            <br />
+            <button
+              type="submit"
+              className="w-20 py-2 bg-gray-800 text-white hover:bg-gray-400 rounded"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
