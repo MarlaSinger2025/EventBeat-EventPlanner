@@ -14,7 +14,8 @@ export const EventProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:4001/api/events");
+       const response = await fetch ("http://localhost:8080/api/v2/events");
+        //const response = await fetch("http://localhost:4001/api/events");
 
         if (!response.ok) {
           throw new Error(`Error status: ${response.status}`);
@@ -39,8 +40,11 @@ export const EventProvider = ({ children }) => {
     const fetchEventDetail = async () => {
       try {
         const response = await fetch(
-          `http://localhost:4001/api/events/${selectedId}`,
+          `http://localhost:8080/api/v2/events/${selectedId}`,
         );
+        // const response = await fetch(
+        //   `http://localhost:4001/api/events/${selectedId}`,
+        // );
         if (!response.ok) throw new Error(`Error status: ${response.status}`);
 
         const data = await response.json();
@@ -55,7 +59,7 @@ export const EventProvider = ({ children }) => {
   const addEvent = async (eventData, authToken) => {
     setError(null);
     try {
-      const response = await fetch("http://localhost:4001/api/events", {
+      const response = await fetch("http://localhost:8080/api/v2/events", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${authToken}`,

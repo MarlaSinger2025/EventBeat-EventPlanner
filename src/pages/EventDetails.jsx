@@ -25,7 +25,7 @@ const EventDetails = () => {
                 <div className="bg-white w-fit p-10 rounded-2xl mx-auto mt-40 border-[3px] border-black">
                     <h1 className="text-3xl font-bold tracking-wide  text-blue-700 mb-2">{(eventDetail.title).toUpperCase()}</h1>
                     <p className="text-2xl font-semibold mb-4">{new Date(eventDetail.date).toLocaleDateString()}</p>
-                    <p className="text-xl font-semibold mb-4"> {eventDetail.description}</p>
+                    <p className="text-xl font-semibold mb-4"> {eventDetail.detail}</p>
                     <p className="font-semibold pl-13">{eventDetail.location}</p>
                     <p className=" text-red-700"> 
                     <span className="flex items-center gap-2">

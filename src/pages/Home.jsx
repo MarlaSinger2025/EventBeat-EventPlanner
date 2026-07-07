@@ -21,7 +21,7 @@ const Home = () => {
           <Hero />
             <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-5 w-full bg-black p-12">
                 {sortedEvents.map((event) => (
-                <EventCards key={event.id} {...event} />
+                <EventCards key={event._id} {...event} />
                 ))}
             </div>
         </>

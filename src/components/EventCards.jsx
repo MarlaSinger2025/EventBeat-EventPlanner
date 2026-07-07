@@ -1,16 +1,16 @@
 import { useEvent } from "../context/EventContext"; 
 import { Link } from "react-router";
 
-const EventCards = ({ id, title, date, location}) => {
+const EventCards = ({ _id, title, date, location}) => {
 
     const { setSelectedId } = useEvent();
 
     return (
-      <Link to={`/events/${id}`} onClick={() => setSelectedId(id)} >
+      <Link to={`/events/${_id}`} onClick={() => setSelectedId(_id)} >
         <div className="card border-2 border-gray-700 bg-base-100 image-full hover:cursor-pointer shadow-sm">
           <figure>
             <img 
-              src={`https://picsum.photos/seed/${id}/500/300`}
+              src={`https://picsum.photos/seed/{id}/500/300`}
               alt='random background picture'
             />
           </figure>
