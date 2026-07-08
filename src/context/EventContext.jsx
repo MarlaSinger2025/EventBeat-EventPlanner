@@ -15,8 +15,6 @@ export const EventProvider = ({ children }) => {
     const fetchData = async () => {
       try {
        const response = await fetch ("https://eventbeat-api-snib.onrender.com/api/v2/events");
-        //const response = await fetch("http://localhost:4001/api/events");
-
         if (!response.ok) {
           throw new Error(`Error status: ${response.status}`);
         }
@@ -42,9 +40,6 @@ export const EventProvider = ({ children }) => {
         const response = await fetch(
           `https://eventbeat-api-snib.onrender.com/api/v2/events/${selectedId}`,
         );
-        // const response = await fetch(
-        //   `http://localhost:4001/api/events/${selectedId}`,
-        // );
         if (!response.ok) throw new Error(`Error status: ${response.status}`);
 
         const data = await response.json();
@@ -56,13 +51,12 @@ export const EventProvider = ({ children }) => {
     fetchEventDetail();
   }, [selectedId]);
 
-  const addEvent = async (eventData, authToken) => {
+  const addEvent = async (eventData) => {
     setError(null);
     try {
-      const response = await fetch("http://localhost:8080/api/v2/events", {
+      const response = await fetch("https://eventbeat-api-snib.onrender.com/api/v2/events", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${authToken}`,
           Accept: "application/json",
           "Content-Type": "application/json",
         },

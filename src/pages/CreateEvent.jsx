@@ -15,7 +15,7 @@ const CreateEvent = () => {
   const [errors, setErrors] = useState({});
   const { addEvent, isAdded } = useEvent();
 
-  const authToken = localStorage.getItem("token");
+  //const authToken = localStorage.getItem("token");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,9 +26,6 @@ const CreateEvent = () => {
   };
   const validate = () => {
     const newErrors = {};
-    if (!authToken) {
-      alert("Please login to add new event");
-    }
     if (!eventData.title) {
       newErrors.title = "Please enter a valid title";
     }
@@ -51,8 +48,7 @@ const CreateEvent = () => {
       setErrors(newErrors);
       return; // stop here, don't accept the submission
     }
-    //console.log(eventData);
-    addEvent(eventData, authToken);
+    addEvent(eventData);
     setEventData(initialData);
   };
 
