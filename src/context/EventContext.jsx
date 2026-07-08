@@ -14,7 +14,7 @@ export const EventProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-       const response = await fetch ("http://localhost:8080/api/v2/events");
+       const response = await fetch ("https://eventbeat-api-snib.onrender.com/api/v2/events");
         //const response = await fetch("http://localhost:4001/api/events");
 
         if (!response.ok) {
@@ -40,7 +40,7 @@ export const EventProvider = ({ children }) => {
     const fetchEventDetail = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8080/api/v2/events/${selectedId}`,
+          `https://eventbeat-api-snib.onrender.com/api/v2/events/${selectedId}`,
         );
         // const response = await fetch(
         //   `http://localhost:4001/api/events/${selectedId}`,
