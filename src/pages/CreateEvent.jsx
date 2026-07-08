@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 const initialData = {
   title: "",
-  description: "",
+  detail: "",
   date: "",
   location: "",
   latitude: 0,
@@ -29,8 +29,8 @@ const CreateEvent = () => {
     if (!eventData.title) {
       newErrors.title = "Please enter a valid title";
     }
-    if (!eventData.description) {
-      newErrors.description = "Please enter a valid description";
+    if (!eventData.detail) {
+      newErrors.detail = "Please enter a valid description";
     }
     if (!eventData.date) {
       newErrors.date = "Please enter a valid date";
@@ -76,18 +76,18 @@ const CreateEvent = () => {
             {errors.title && <p style={{ color: "red" }}>{errors.title}</p>}
             <br />
             <label>
-              Description:
+              Detail:
               <br />
               <textarea
                 type="text"
-                name="description"
-                value={eventData.description}
+                name="detail"
+                value={eventData.detail}
                 onChange={handleChange}
                 className="w-full mt-1 border border-black"
               />
             </label>
-            {errors.description && (
-              <p style={{ color: "red" }}>{errors.description}</p>
+            {errors.detail && (
+              <p style={{ color: "red" }}>{errors.detail}</p>
             )}
             <br />
             <label>
