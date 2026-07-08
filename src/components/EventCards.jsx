@@ -21,7 +21,7 @@ const EventCards = ({ _id, title, date, location}) => {
               <span className="flex items-center gap-2">
                 <img 
               className="w-8"
-              src='src/img/location_red.png' />
+              src='./img/location_red.png' />
               {location}
               </span>
               </p>  
