@@ -3,6 +3,8 @@ import { useParams } from "react-router";
 import { useEffect } from "react";
 import { Link } from "react-router";
 
+import locationIconRed from "../img/location_red.png";
+
 const EventDetails = () => {
     const { id } = useParams();
     const { eventDetail, error, setSelectedId } = useEvent();
@@ -31,7 +33,7 @@ const EventDetails = () => {
                     <span className="flex items-center gap-2">
                 <img 
               className="w-11"
-              src='/src/img/location_red.png' />
+              src={locationIconRed} />
               latitude: {eventDetail.latitude}
               </span>
               </p>
