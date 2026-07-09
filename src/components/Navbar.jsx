@@ -1,5 +1,6 @@
 //import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router";
+import heartbeatLogo from '../img/heartbeat_logo.png';
 
 const Navbar = () => {
  // const { isAuthenticated, logOut } = useAuth();
@@ -9,7 +10,7 @@ const Navbar = () => {
         <Link to="/" className="flex flex-row gap-3">
           <img
             className="w-10"
-            src="./img/heartbeat_logo.png"
+            src={heartbeatLogo}
             alt="logo of a heartbeat pulse in a cirle"
           />
           <span className=" text-[#150046] text-3xl font-bold tracking-tight">
