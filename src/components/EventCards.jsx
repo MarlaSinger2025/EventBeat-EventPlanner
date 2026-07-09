@@ -1,6 +1,8 @@
 import { useEvent } from "../context/EventContext"; 
 import { Link } from "react-router";
 
+import locationIconRed from "../img/location_red.png";
+
 const EventCards = ({ _id, title, date, location}) => {
 
     const { setSelectedId } = useEvent();
@@ -21,7 +23,7 @@ const EventCards = ({ _id, title, date, location}) => {
               <span className="flex items-center gap-2">
                 <img 
               className="w-8"
-              src='./img/location_red.png' />
+              src={locationIconRed} />
               {location}
               </span>
               </p>  
